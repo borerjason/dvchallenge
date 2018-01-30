@@ -11,17 +11,15 @@ const isDev = process.env.NODE_ENV !== 'production';
 const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false;
 const resolve = require('path').resolve;
 const app = express();
-const db = require('./db');
+const db = require('./database');
+const controller = require('./controllers');
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 app.use(bodyParser.json());
 
-app.post('/savedstrings', (req, res) => {
-  let search = req.body;
-  console.log(req.body);
-  res.status(200).send({ search });
-});
+app.route('/savedstrings')
+  .post(controller.addString);
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
