@@ -20,7 +20,8 @@ import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import messages from './messages';
 import { updateString, postString } from './actions';
-import { makeSelectInputString } from './selectors';
+import { makeSelectInputString, makeSelectStrings } from './selectors';
+// import { makeSelectStrings } from '../App/selectors';
 import reducer from './reducer';
 import saga from './saga';
 
@@ -68,6 +69,7 @@ export function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = createStructuredSelector({
   inputString: makeSelectInputString(),
+  strings: makeSelectStrings(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

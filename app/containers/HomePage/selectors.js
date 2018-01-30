@@ -6,8 +6,13 @@ const makeSelectInputString = () => createSelector(
   selectHome,
   (homeState) => homeState.get('inputString')
 );
+const makeSelectStrings = () => createSelector(
+  selectHome,
+  (homeState) => homeState.get('strings')
+);
 
 export {
   selectHome,
+  makeSelectStrings,
   makeSelectInputString,
 };
