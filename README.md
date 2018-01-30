@@ -152,3 +152,12 @@ This project would not be possible without the support by these amazing folks. [
 
 This project is licensed under the MIT license, Copyright (c) 2017 Maximilian
 Stoiber. For more information see `LICENSE.md`.
+
+## Database
+
+In Terminal:
+Start postgreSQL by typing brew services start postgresql (or other method if did not install wuth homebrew)
+Type: createdb dvchallenge 
+
+
+
