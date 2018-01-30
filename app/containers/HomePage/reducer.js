@@ -1,13 +1,16 @@
-import UPDATE_STRING from './constants';
+import { UPDATE_STRING } from './constants';
 
-const initialState = {
-  inputString: '',
-};
+import { fromJS } from 'immutable';
 
-function updateReducer(state = initialState, action) {
-  console.log('in reducer');
+// const initialState = fromJS({
+//   inputString: '',
+// });
+
+function updateReducer(state = '', action) {
+  console.log('in reducer state', state);
   switch (action.type) {
     case UPDATE_STRING:
+    console.log('in reducer', action.inputString);
       return action.inputString;
     default:
       return state;

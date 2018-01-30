@@ -11,14 +11,14 @@
 
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import messages from './messages';
-import { updateString } from './actions';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import messages from './messages';
+import { updateString } from './actions';
 
 class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
-    {console.log(this.props)}
+    {console.log('PROPS', this.props)}
     return (
       <div>
         <h1>
@@ -31,7 +31,9 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
             value={this.props.inputString}
             onChange={this.props.onChangeInputString}
           />
-          <button>Submit</button>
+          <button
+            onClick={() => { console.log('SUBMIT', this.props); }}
+          >Submit</button>
 
         </div>
       </div>
@@ -46,7 +48,9 @@ export function mapDispatchToProps(dispatch) {
 }
 
 const mapStateToProps = (state) => {
-  return { inputString: state.inputString };
+  console.log('in mapstatetoprops', state);
+  // need to update this to use selectors
+  return { inputString: state._root.entries[2][1] };
 };
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
@@ -54,3 +58,4 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 export default compose(
   withConnect,
 )(HomePage);
+
