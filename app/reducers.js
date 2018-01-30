@@ -47,6 +47,6 @@ export default function createReducer(injectedReducers) {
     route: routeReducer,
     language: languageProviderReducer,
     ...injectedReducers,
-    inputString: updateReducer,
+    // inputString: updateReducer,
   });
 }

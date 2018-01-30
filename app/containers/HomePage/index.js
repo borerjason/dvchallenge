@@ -10,11 +10,19 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
+
+import injectReducer from 'utils/injectReducer';
+// import injectSaga from 'utils/injectSaga';
 import messages from './messages';
 import { updateString } from './actions';
+import { makeSelectInputString } from './selectors';
+import reducer from './reducer';
+// import saga from './saga'
 
 class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -41,21 +49,35 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
   }
 }
 
+HomePage.PropTypes = {
+  inputString: PropTypes.string,
+  onChangeInputString: PropTypes.func,
+};
+
 export function mapDispatchToProps(dispatch) {
   return {
     onChangeInputString: (event) => dispatch(updateString(event.target.value)),
   };
 }
 
+const mapStateToProps = createStructuredSelector({
+  inputString: makeSelectInputString(),
+});
+
+/*
 const mapStateToProps = (state) => {
   console.log('in mapstatetoprops', state);
   // need to update this to use selectors
   return { inputString: state._root.entries[2][1] };
 };
+*/
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
+const withReducer = injectReducer({ key: 'home', reducer });
+
 export default compose(
+  withReducer,
   withConnect,
 )(HomePage);
 
