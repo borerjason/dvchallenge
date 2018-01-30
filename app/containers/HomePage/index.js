@@ -17,10 +17,12 @@ import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
 import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
 import messages from './messages';
 import { updateString, postString } from './actions';
 import { makeSelectInputString } from './selectors';
 import reducer from './reducer';
+import saga from './saga';
 
 class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -67,9 +69,11 @@ const mapStateToProps = createStructuredSelector({
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 const withReducer = injectReducer({ key: 'home', reducer });
+const withSaga = injectSaga({ key: 'home', saga });
 
 export default compose(
   withReducer,
+  withSaga,
   withConnect,
 )(HomePage);
 

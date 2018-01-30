@@ -18,7 +18,9 @@ const db = require('./db');
 app.use(bodyParser.json());
 
 app.post('/savedstrings', (req, res) => {
+  let search = req.body;
   console.log(req.body);
+  res.status(200).send({ search });
 });
 
 // In production we need to pass these values in instead of relying on webpack

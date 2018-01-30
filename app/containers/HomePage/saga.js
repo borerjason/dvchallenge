@@ -7,13 +7,28 @@ import { makeSelectInputString } from './selectors';
 
 
 export function* getStrings() {
+
   const string = yield select(makeSelectInputString());
-  const requestURL = 'http://localhost:3000/savedstrings';
+  const requestURL = '/savedstrings';
+
+  const options = {
+    method: 'post',
+    body: JSON.stringify({ string }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
 
   try {
-    const strings = yield call(request, requestURL);
+    console.log('strings in saga', strings);
+    const strings = yield call(request, requestURL, options);
+    console.log('strings in saga', strings);
     yield put(stringPosted(strings));
   } catch (err) {
     yield put(loadingError(err));
   }
+}
+
+export default function* stringData() {
+  yield takeLatest(POST_STRING, getStrings);
 }

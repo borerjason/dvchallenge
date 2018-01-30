@@ -13,9 +13,9 @@ function updateReducer(state = initialState, action) {
     case UPDATE_STRING:
       return state
         .set('inputString', action.inputString);
-    case POST_STRING:
-      console.log('STRING in Reducer', action.string);
-      return state;
+    // case POST_STRING:
+    //   console.log('STRING in Reducer', action.string);
+    //   return state;
       // return state
       //   .set('strings', [...action.strings]);
     default:
