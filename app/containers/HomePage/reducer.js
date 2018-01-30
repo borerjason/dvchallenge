@@ -5,6 +5,7 @@ const initialState = {
 };
 
 function updateReducer(state = initialState, action) {
+  console.log('in reducer');
   switch (action.type) {
     case UPDATE_STRING:
       return action.inputString;
