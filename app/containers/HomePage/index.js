@@ -42,6 +42,10 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
             onClick={() => this.props.onClickPostInputString(this.props.inputString)}
           >Submit
           </button>
+          <button
+            onClick={() => { console.log(this.props)}}
+          >Submit2
+          </button>
 
         </div>
       </div>

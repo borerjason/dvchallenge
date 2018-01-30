@@ -1,6 +1,10 @@
 import { fromJS } from 'immutable';
 
-import { UPDATE_STRING, POST_STRING } from './constants';
+import {
+  UPDATE_STRING,
+  POST_STRING,
+  STRING_POSTED_SUCCESS,
+ } from './constants';
 
 const initialState = fromJS({
   inputString: '',
@@ -8,7 +12,6 @@ const initialState = fromJS({
 });
 
 function updateReducer(state = initialState, action) {
-  console.log('in reducer above');
   switch (action.type) {
     case UPDATE_STRING:
       return state
@@ -18,6 +21,10 @@ function updateReducer(state = initialState, action) {
     //   return state;
       // return state
       //   .set('strings', [...action.strings]);
+    case STRING_POSTED_SUCCESS:
+      console.log('IN POSTED REDUCER', action.strings);
+      return state
+        .set('strings', action.strings);
     default:
       return state;
   }

@@ -7,7 +7,6 @@ import { makeSelectInputString } from './selectors';
 
 
 export function* getStrings() {
-
   const string = yield select(makeSelectInputString());
   const requestURL = '/savedstrings';
 
@@ -20,9 +19,7 @@ export function* getStrings() {
   };
 
   try {
-    console.log('strings in saga', strings);
     const strings = yield call(request, requestURL, options);
-    console.log('strings in saga', strings);
     yield put(stringPosted(strings));
   } catch (err) {
     yield put(loadingError(err));
