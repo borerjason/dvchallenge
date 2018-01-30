@@ -22,6 +22,9 @@ app.route('/savedstrings')
   .post(controller.addString)
   .get(controller.getStrings);
 
+// data comes back:
+// [{ "string": "jason" }, { "string": "banana" }]
+
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
   outputPath: resolve(process.cwd(), 'build'),

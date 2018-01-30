@@ -1,11 +1,11 @@
 const selectStrings = require('../database/selectStrings');
+const prepareStrings = require('../utils/prepareStrings');
 
 const getStrings = (req, res) => {
-  // console.log(req.body);
   selectStrings()
     .then((response) => {
-      console.log('RESPONSE', response);
-      res.status(200).send(response);
+      const strings = prepareStrings(response);
+      res.status(200).send(strings);
     });
 };
 
