@@ -17,12 +17,10 @@ import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
 import injectReducer from 'utils/injectReducer';
-// import injectSaga from 'utils/injectSaga';
 import messages from './messages';
-import { updateString } from './actions';
+import { updateString, postString } from './actions';
 import { makeSelectInputString } from './selectors';
 import reducer from './reducer';
-// import saga from './saga'
 
 class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -39,8 +37,9 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
             onChange={this.props.onChangeInputString}
           />
           <button
-            onClick={() => { console.log('SUBMIT', this.props); }}
-          >Submit</button>
+            onClick={() => this.props.onClickPostInputString(this.props.inputString)}
+          >Submit
+          </button>
 
         </div>
       </div>
@@ -48,14 +47,16 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
   }
 }
 
-HomePage.PropTypes = {
+HomePage.propTypes = {
   inputString: PropTypes.string,
   onChangeInputString: PropTypes.func,
+  onClickPostInputString: PropTypes.func,
 };
 
 export function mapDispatchToProps(dispatch) {
   return {
     onChangeInputString: (event) => dispatch(updateString(event.target.value)),
+    onClickPostInputString: (string) => dispatch(postString(string)),
   };
 }
 
