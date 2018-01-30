@@ -26,7 +26,6 @@ import reducer from './reducer';
 
 class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
-    {console.log('PROPS', this.props)}
     return (
       <div>
         <h1>
@@ -63,14 +62,6 @@ export function mapDispatchToProps(dispatch) {
 const mapStateToProps = createStructuredSelector({
   inputString: makeSelectInputString(),
 });
-
-/*
-const mapStateToProps = (state) => {
-  console.log('in mapstatetoprops', state);
-  // need to update this to use selectors
-  return { inputString: state._root.entries[2][1] };
-};
-*/
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
