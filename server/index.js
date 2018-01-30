@@ -19,7 +19,8 @@ const controller = require('./controllers');
 app.use(bodyParser.json());
 
 app.route('/savedstrings')
-  .post(controller.addString);
+  .post(controller.addString)
+  .get(controller.getStrings);
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {

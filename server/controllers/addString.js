@@ -1,4 +1,4 @@
-const insert = require('../database/queries');
+const insert = require('../database/insertString');
 
 const addString = (req, res) => {
   // console.log(req.body);
