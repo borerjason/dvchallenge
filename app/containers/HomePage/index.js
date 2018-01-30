@@ -22,7 +22,16 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         <h1>
           <FormattedMessage {...messages.header} />
         </h1>
-        
+        <div>
+          <input
+            type="text"
+            placeholder="Enter a string..."
+            value={this.props.inputString}
+            onChange={this.props.onChangeInputString}
+          />
+          <button>Submit</button>
+
+        </div>
       </div>
     );
   }
