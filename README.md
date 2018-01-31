@@ -7,7 +7,7 @@ Front End: React Boilerplate (information below)
   - Reselect
   - Styled Components
 
-Backend: Node.js/Express
+Backend: Node.js/Express  
 Database: PostgreSQL
 
 ## React Boilerplate
