@@ -17,7 +17,6 @@ function updateReducer(state = initialState, action) {
         .set('inputString', action.inputString)
         .set('posted', false);
     case STRING_POSTED_SUCCESS:
-    console.log('Posted in reducere');
       return state
         .set('inputString', '')
         .set('posted', true);

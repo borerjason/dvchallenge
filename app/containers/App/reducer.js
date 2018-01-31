@@ -13,7 +13,6 @@ function appReducer(state = initialState, action) {
     case STRING_LOAD_SUCCESSFUL:
       return state
         .set('strings', action.strings);
-        
     default:
       return state;
   }
