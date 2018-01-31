@@ -7,8 +7,8 @@ const addString = (req, res) => {
     .then(() => {
       select()
         .then((response) => {
-          const strings = prepareStrings(response);
-          res.status(200).send(strings);
+          // const strings = prepareStrings(response);
+          res.status(200).send(response);
         });
     });
 };

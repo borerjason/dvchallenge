@@ -1,7 +1,7 @@
 const knex = require('../database');
 
 const selectStrings = () => (
-  knex.select('string').from('strings')
+  knex.select('string', 'uid').from('strings')
 );
 
 module.exports = selectStrings;

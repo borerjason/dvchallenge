@@ -10,7 +10,6 @@ export function loadStrings() {
 }
 
 export function stringsLoaded(strings) {
-  console.log('strings loaded action called');
   return {
     type: STRING_LOAD_SUCCESSFUL,
     strings,

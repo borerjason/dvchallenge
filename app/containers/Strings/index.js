@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
@@ -11,42 +12,27 @@ import saga from './saga';
 
 import { loadStrings } from '../App/actions';
 
-class Strings extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      sampleStrings: ['test1', 'test2', 'test3'],
-    };
-  }
-
+class Strings extends React.Component {
   componentDidMount() {
-    console.log('Component did Mount');
     this.props.onInitialLoad();
-  }
-
-  renderStrings(strings) {
-    return (
-      <div>
-        {this.state.sampleStrings.map((string) => (
-          <div item={string}></div>
-        ))}
-      </div>
-    );
   }
 
   render() {
     return (
       <div>
         <div>
-          {this.props.strings.map((string) => (
-            <div>{string}</div>
+          {this.props.strings.map((string) => ( // eslint-disable-line react/prop-types
+            <div key={string.uid}>{string.string}</div>
           ))}
         </div>
       </div>
     );
   }
 }
+
+Strings.propTypes = {
+  onInitialLoad: PropTypes.func,
+};
 
 export function mapDispatchToProps(dispatch) {
   return {
