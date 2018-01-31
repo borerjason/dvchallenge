@@ -49,7 +49,7 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
           </Button>
         </Form>
         <H1>
-          {this.props.posted ? 'Your String was successfully posted!' : '' }
+          {this.props.posted ? 'Your string was successfully posted!' : '' }
         </H1>
       </div>
     );
