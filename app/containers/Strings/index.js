@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
+
 import { makeSelectStrings } from '../App/selectors';
 import reducer from '../App/reducer';
 import saga from './saga';
-
+import Words from '../../components/Words';
 import { loadStrings } from '../App/actions';
 
 class Strings extends React.Component {
@@ -20,11 +20,11 @@ class Strings extends React.Component {
   render() {
     return (
       <div>
-        <div>
+        <Words>
           {this.props.strings.map((string) => ( // eslint-disable-line react/prop-types
             <div key={string.uid}>{string.string}</div>
           ))}
-        </div>
+        </Words>
       </div>
     );
   }

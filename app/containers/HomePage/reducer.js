@@ -22,7 +22,8 @@ function updateReducer(state = initialState, action) {
       //   .set('strings', [...action.strings]);
     case STRING_POSTED_SUCCESS:
       console.log('IN POSTED REDUCER', action.strings);
-      return state;
+      return state
+        .set('inputString', '');
     default:
       return state;
   }

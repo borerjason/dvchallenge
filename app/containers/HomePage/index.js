@@ -48,6 +48,9 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
           >Submit
           </Button>
         </Form>
+        <div>
+          
+        </div>
       </div>
     );
   }
@@ -68,7 +71,6 @@ export function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = createStructuredSelector({
   inputString: makeSelectInputString(),
-  // strings: makeSelectStrings(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
