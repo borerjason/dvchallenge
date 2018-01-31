@@ -1,11 +1,14 @@
 const insertString = require('../insertString');
 
 describe('controllers', () => {
-  it('should return a promise when insert string to DB', () => {
+  it('should return an empty array when insert string to DB', () => {
     const str = 'myString';
-    const actual = typeof insertString(str);
-    const expected = 'Promise';
-
-    expected(actual).toEqual(expected);
+    let actual;
+    insertString(str)
+      .then((res) => {
+        actual = res;
+      });
+    const expected = 0;
+    expected(actual.length).toEqual(expected);
   });
 });
