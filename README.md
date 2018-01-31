@@ -1,6 +1,16 @@
-<img src="https://raw.githubusercontent.com/react-boilerplate/react-boilerplate-brand/master/assets/banner-metal-optimized.jpg" alt="react boilerplate banner" align="center" />
+## Interview Coding Challenge:
 
-<br />
+Front End: React Boilerplate (information below)
+  - React Router
+  - Redux
+  - Redux Saga
+  - Reselect
+  - Styled Components
+
+Backend: Node.js/Express
+Database: PostgreSQL
+
+## React Boilerplate
 
 <div align="center"><strong>Start your next react project in seconds</strong></div>
 <div align="center">A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices</div>
