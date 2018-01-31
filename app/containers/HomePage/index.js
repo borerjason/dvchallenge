@@ -20,7 +20,7 @@ import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import messages from './messages';
 import { updateString, postString } from './actions';
-import { makeSelectInputString } from './selectors';
+import { makeSelectInputString, makePosted } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import Input from '../../components/Input';
@@ -48,9 +48,9 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
           >Submit
           </Button>
         </Form>
-        <div>
-          
-        </div>
+        <H1>
+          {this.props.posted ? 'Your String was successfuly posted!' : '' }
+        </H1>
       </div>
     );
   }
@@ -60,6 +60,7 @@ HomePage.propTypes = {
   inputString: PropTypes.string,
   onChangeInputString: PropTypes.func,
   onClickPostInputString: PropTypes.func,
+  posted: PropTypes.bool,
 };
 
 export function mapDispatchToProps(dispatch) {
@@ -71,6 +72,7 @@ export function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = createStructuredSelector({
   inputString: makeSelectInputString(),
+  posted: makePosted(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
