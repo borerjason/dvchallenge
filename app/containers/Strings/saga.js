@@ -13,7 +13,7 @@ export function* getStrings() {
       'Content-Type': 'application/json',
     },
   };
-  
+
   try {
     const strings = yield call(request, requestURL, options);
     yield put(stringsLoaded(strings));
