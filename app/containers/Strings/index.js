@@ -36,7 +36,6 @@ class Strings extends React.Component { // eslint-disable-line react/prefer-stat
   }
 
   render() {
-    console.log('PROPS', this.props);
     return (
       <div>
         <div>
@@ -54,13 +53,6 @@ export function mapDispatchToProps(dispatch) {
     onInitialLoad: () => dispatch(loadStrings()),
   };
 }
-
-// function mapStateToProps(state) {
-//   return {
-//     strings: state.strings,
-//   };
-// }
-
 
 const mapStateToProps = createStructuredSelector({
   strings: makeSelectStrings(),

@@ -17,6 +17,7 @@ function appReducer(state = initialState, action) {
     console.log('called inside reducer string load successful', action.strings);
       return state
         .set('strings', action.strings);
+        
     default:
       return state;
   }

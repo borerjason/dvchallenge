@@ -70,7 +70,7 @@ export function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = createStructuredSelector({
   inputString: makeSelectInputString(),
-  strings: makeSelectStrings(),
+  // strings: makeSelectStrings(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
