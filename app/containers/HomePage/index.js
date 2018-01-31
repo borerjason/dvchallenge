@@ -27,6 +27,7 @@ import saga from './saga';
 
 class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
+    console.log('HOME PAGE PROPS', this.props);
     return (
       <div>
         <h1>

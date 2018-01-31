@@ -10,3 +10,6 @@
  */
 
 export const DEFAULT_LOCALE = 'en';
+export const LOAD_STRINGS = 'dvchallenge/app/App/LOAD_STRINGS';
+export const STRING_LOAD_SUCCESSFUL = 'dvchallenge/app/App/STRING_LOAD_SUCCESSFUL';
+

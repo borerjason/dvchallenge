@@ -1,59 +1,77 @@
-// import React from 'react';
-// // import { connect } from 'react-redux';
-// // import { compose } from 'redux';
-// // import { createStructuredSelector } from 'reselect';
+import React from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
 
-// // import injectReducer from 'utils/injectReducer';
-// // import { makeSelectStrings } from '../HomePage/selectors';
-// // import reducer from '../HomePage/reducer';
-// // // import saga from '../HomePage/saga';
+import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
+import { makeSelectStrings } from '../App/selectors';
+import reducer from '../App/reducer';
+import saga from './saga';
 
-// export default class Strings extends React.Component { // eslint-disable-line react/prefer-stateless-function
-//   constructor(props) {
-//     super(props);
+import { loadStrings } from '../App/actions';
 
-//     this.state = {
-//       sampleStrings: ['test1', 'test2', 'test3'],
-//     };
-//   }
+class Strings extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super(props);
 
-//   componentDidMount() {
-//     console.log('Component did Mount');
-//   }
+    this.state = {
+      sampleStrings: ['test1', 'test2', 'test3'],
+    };
+  }
 
-//   renderStrings(strings) {
-//     return (
-//       <div>
-//         {this.state.sampleStrings.map((string) => (
-//           <div item={string}></div>
-//         ))}
-//       </div>
-//     );
-//   }
+  componentDidMount() {
+    console.log('Component did Mount');
+    this.props.onInitialLoad();
+  }
 
-//   render() {
-//     return (
-//       <div>
-//         <div>
-//           {this.state.sampleStrings.map((string) => (
-//             <div>{string}</div>
-//           ))}
-//         </div>
-//       </div>
-//     );
-//   }
+  renderStrings(strings) {
+    return (
+      <div>
+        {this.state.sampleStrings.map((string) => (
+          <div item={string}></div>
+        ))}
+      </div>
+    );
+  }
+
+  render() {
+    console.log('PROPS', this.props);
+    return (
+      <div>
+        <div>
+          {this.props.strings.map((string) => (
+            <div>{string}</div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    onInitialLoad: () => dispatch(loadStrings()),
+  };
+}
+
+// function mapStateToProps(state) {
+//   return {
+//     strings: state.strings,
+//   };
 // }
 
-// const mapStateToProps() = 
-// // const mapStateToProps = createStructuredSelector({
-// //   strings: makeSelectStrings(),
-// // });
 
-// //   const withReducer = injectReducer({ key: 'home', reducer });
-// //   // const withSaga = injectSaga({ key: 'home', saga });
+const mapStateToProps = createStructuredSelector({
+  strings: makeSelectStrings(),
+});
 
-// // export default compose(
-// //   // withReducer,
-// //   // withSaga,
-// //   mapStateToProps,
-// // )(Strings);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+const withReducer = injectReducer({ key: 'global', reducer });
+const withSaga = injectSaga({ key: 'global', saga });
+
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect,
+)(Strings);
