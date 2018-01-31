@@ -20,36 +20,34 @@ import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import messages from './messages';
 import { updateString, postString } from './actions';
-import { makeSelectInputString, makeSelectStrings } from './selectors';
-// import { makeSelectStrings } from '../App/selectors';
+import { makeSelectInputString } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import Input from '../../components/Input';
+import Button from '../../components/Button';
+import Form from '../../components/Form';
+import H1 from '../../components/H1';
+
 
 class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
-    console.log('HOME PAGE PROPS', this.props);
     return (
       <div>
-        <h1>
+        <H1>
           <FormattedMessage {...messages.header} />
-        </h1>
-        <div>
-          <input
+        </H1>
+        <Form>
+          <Input
             type="text"
             placeholder="Enter a string..."
             value={this.props.inputString}
             onChange={this.props.onChangeInputString}
           />
-          <button
-            onClick={() => this.props.onClickPostInputString(this.props.inputString)}
+          <Button
+            onClick={(event) => { event.preventDefault(); this.props.onClickPostInputString(this.props.inputString); }}
           >Submit
-          </button>
-          <button
-            onClick={() => { console.log(this.props)}}
-          >Submit2
-          </button>
-
-        </div>
+          </Button>
+        </Form>
       </div>
     );
   }

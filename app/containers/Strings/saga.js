@@ -16,7 +16,6 @@ export function* getStrings() {
   
   try {
     const strings = yield call(request, requestURL, options);
-    console.log('SAGA CALLED', strings);
     yield put(stringsLoaded(strings));
   } catch (err) {
     // fix this later

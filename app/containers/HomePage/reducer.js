@@ -8,7 +8,6 @@ import {
 
 const initialState = fromJS({
   inputString: '',
-  // strings: [],
 });
 
 function updateReducer(state = initialState, action) {
@@ -24,7 +23,6 @@ function updateReducer(state = initialState, action) {
     case STRING_POSTED_SUCCESS:
       console.log('IN POSTED REDUCER', action.strings);
       return state;
-        // .set('strings', action.strings);
     default:
       return state;
   }

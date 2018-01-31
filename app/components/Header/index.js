@@ -1,21 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Navbar from '../../components/Navbar';
+import NavBtn from '../../components/NavBtn';
+
+
 export default class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <div>
-          Saving Strings
-        </div>
-        <div>
-          <Link to="/">
+        <Navbar>
+          <NavBtn to="/">
             Home
-          </Link>
-          <Link to="/strings">
+          </NavBtn>
+          <NavBtn to="/strings">
             Saved Strings
-          </Link>
-        </div>
+          </NavBtn>
+        </Navbar>
       </div>
     );
   }
