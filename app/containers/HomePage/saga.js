@@ -20,8 +20,8 @@ export function* getStrings() {
   };
 
   try {
-    const strings = yield call(request, requestURL, options);
-    yield put(stringPosted(strings));
+    const res = yield call(request, requestURL, options);
+    yield put(stringPosted(res));
   } catch (err) {
     yield put(loadingError(err));
   }

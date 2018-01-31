@@ -1,7 +1,6 @@
 import { fromJS } from 'immutable';
 
 import {
-  LOAD_STRINGS,
   STRING_LOAD_SUCCESSFUL,
  } from './constants';
 
