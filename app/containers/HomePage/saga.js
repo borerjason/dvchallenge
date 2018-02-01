@@ -7,7 +7,6 @@ import { makeSelectInputString } from './selectors';
 
 
 export function* getStrings() {
-  // string is my current state of input string
   const string = yield select(makeSelectInputString());
   const requestURL = '/savedstrings';
 
@@ -28,6 +27,5 @@ export function* getStrings() {
 }
 
 export default function* stringData() {
-  // watches for POST_STRING and calls getStrings();
   yield takeLatest(POST_STRING, getStrings);
 }
