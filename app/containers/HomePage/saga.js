@@ -6,7 +6,7 @@ import { POST_STRING } from './constants';
 import { makeSelectInputString } from './selectors';
 
 
-export function* getStrings() {
+export function* addString() {
   const string = yield select(makeSelectInputString());
   const requestURL = '/savedstrings';
 
@@ -19,13 +19,13 @@ export function* getStrings() {
   };
 
   try {
-    const res = yield call(request, requestURL, options);
-    yield put(stringPosted(res));
+    yield call(request, requestURL, options);
+    yield put(stringPosted());
   } catch (err) {
     yield put(loadingError(err));
   }
 }
 
 export default function* stringData() {
-  yield takeLatest(POST_STRING, getStrings);
+  yield takeLatest(POST_STRING, addString);
 }

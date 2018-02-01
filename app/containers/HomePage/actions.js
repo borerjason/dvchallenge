@@ -21,10 +21,9 @@ export function postString(string) {
 }
 
 // dispatched when the strings are loaded by the request saga
-export function stringPosted(strings) {
+export function stringPosted() {
   return {
     type: STRING_POSTED_SUCCESS,
-    strings,
   };
 }
 

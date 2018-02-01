@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import request from 'utils/request';
 
-import { stringsLoaded } from '../App/actions';
+import { stringsLoaded, loadingError } from '../App/actions';
 import { LOAD_STRINGS } from '../App/constants';
 
 
@@ -18,12 +18,10 @@ export function* getStrings() {
     const strings = yield call(request, requestURL, options);
     yield put(stringsLoaded(strings));
   } catch (err) {
-    // fix this later
-    // yield put(loadingError(err));
+    yield put(loadingError(err));
   }
 }
 
 export default function* stringData() {
-  // watches for LOAD_STRINGS and calls getStrings();
   yield takeLatest(LOAD_STRINGS, getStrings);
 }
